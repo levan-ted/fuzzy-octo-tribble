@@ -9,7 +9,8 @@ const Searchbar = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.setKeywords((prevState) => {
-      if (prevState.includes(inputVal)) return prevState;
+      if (prevState.includes(inputVal) || inputVal.trim() === "")
+        return prevState;
       return [...prevState, inputVal.toLowerCase()];
     });
     setInputVal("");
