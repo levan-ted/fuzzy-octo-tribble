@@ -11,7 +11,12 @@ const Gallery = ({ list }) => {
   return (
     <section className={classes["grid-container"]}>
       {list.map((item, idx) => (
-        <Card data={item} className={classes[`h-${randomize(CHMC)}`]} />
+        <Card
+          key={item.title}
+          idx={idx}
+          data={item}
+          className={classes[`h-${randomize(CHMC)}`]}
+        />
       ))}
     </section>
   );

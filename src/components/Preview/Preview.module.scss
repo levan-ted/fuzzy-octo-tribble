@@ -1,0 +1,26 @@
+.backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.container {
+  position: fixed;
+  max-width: 80vw;
+  max-height: 80vh;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  overflow: hidden;
+  img {
+    max-width: 90vw;
+    height: 80vh;
+    object-fit: contain;
+  }
+}

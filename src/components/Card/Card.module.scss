@@ -7,7 +7,8 @@
   height: 100%;
   overflow: hidden;
   cursor: pointer;
-  transition: all ease-out 0.2s;
+  transition: box-shadow ease-out 0.2s;
+  animation: slidein ease-in forwards 1 normal 0.2s;
 
   .image-container {
     width: 100%;
@@ -42,6 +43,15 @@
 .card:hover {
   box-shadow: $loader-color 0px 2px 10px 0px;
   .title {
+    opacity: 1;
+  }
+}
+
+@keyframes slidein {
+  0% {
+    opacity: 0;
+  }
+  100% {
     opacity: 1;
   }
 }
