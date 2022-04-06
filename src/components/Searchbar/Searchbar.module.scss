@@ -1,0 +1,104 @@
+@import "../../styles/variables.scss";
+
+$form-height: 40px;
+
+.container {
+  @include centered-flex;
+  flex-direction: column;
+  width: 100%;
+  height: $form-height + 100px;
+  color: $secondary-text-color;
+
+  form {
+    @include centered-flex;
+    position: relative;
+    height: $form-height;
+    overflow: hidden;
+    width: $grid-ct--max-width / $grid-columns;
+    color: $secondary-text-color;
+
+    .clear {
+      position: absolute;
+      left: 0;
+      color: inherit;
+      opacity: 0;
+      height: 10px;
+      width: 15px;
+      cursor: pointer;
+    }
+
+    input {
+      background: $secondary-background;
+      border: none;
+      height: 100%;
+      width: 100%;
+      outline: none;
+      color: inherit;
+      padding: 0 1.1rem;
+    }
+
+    button {
+      position: absolute;
+      right: 0;
+      height: $form-height;
+      width: $form-height;
+      background: $secondary-background;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    span {
+      width: 100%;
+      height: 2px;
+      position: absolute;
+      bottom: 0;
+      left: -100%;
+      background: $loader-color;
+      transition: all ease-in-out 0.2s;
+      z-index: 12;
+    }
+  }
+
+  form:focus-within {
+    span {
+      left: 0;
+    }
+  }
+
+  form:hover {
+    .clear {
+      opacity: 1;
+    }
+  }
+}
+
+.keywords {
+  max-width: $grid-ct--max-width;
+  width: 100%;
+  color: inherit;
+  @include centered-flex;
+  height: 50px;
+  justify-content: flex-start;
+
+  .keyword {
+    position: relative;
+    height: 1rem;
+    width: fit-content;
+    background-color: $secondary-background;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 5px 15px 5px 10px;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .remove-icon {
+    height: 10px;
+    width: 14px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    cursor: pointer;
+  }
+}
