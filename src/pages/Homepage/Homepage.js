@@ -1,30 +1,25 @@
-import React from "react";
-import Card from "../../components/Card/Card";
-import { MOCK_DATA } from "../../constants/mock-data";
+import React, { useState } from "react";
+import Gallery from "../../components/Gallery";
+import Pagination from "../../components/Pagination";
 import classes from "./Homepage.module.scss";
 
+import { MOCK_DATA } from "../../constants/mock-data";
+import { cardsPerPage } from "../../constants/app-settings";
+
 const Homepage = () => {
-  let list = MOCK_DATA;
-
-  console.log(list);
-
-  const randomize = (num = 1) => Math.trunc(Math.random() * num) + 1;
-  console.log(randomize());
+  const [currentPage, setCurrentPage] = useState(1);
+  let list = MOCK_DATA.slice(0, currentPage * cardsPerPage);
 
   return (
-    <>
+    <div className={classes.homepage}>
       <section>SearchBar</section>
-      <section className={classes["grid-container"]}>
-        {list.map((item, idx) => (
-          <Card
-            data={item}
-            className={
-              classes[`w-${randomize(3)}`] + " " + classes[`h-${randomize(3)}`]
-            }
-          />
-        ))}
-      </section>
-    </>
+
+      <Gallery list={list} />
+      <Pagination
+        noMoreItems={list.length === MOCK_DATA.length}
+        handlePagination={() => setCurrentPage(currentPage + 1)}
+      />
+    </div>
   );
 };
 
