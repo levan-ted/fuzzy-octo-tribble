@@ -8,12 +8,15 @@ const Searchbar = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.setKeywords((prevState) => [...prevState, inputVal]);
+    props.setKeywords((prevState) => {
+      if (prevState.includes(inputVal)) return prevState;
+      return [...prevState, inputVal.toLowerCase()];
+    });
     setInputVal("");
   };
 
   const handleChange = (e) => {
-    setInputVal(e.target.value);
+    setInputVal(e.target.value.toLowerCase());
   };
 
   const handleClearInput = () => setInputVal("");

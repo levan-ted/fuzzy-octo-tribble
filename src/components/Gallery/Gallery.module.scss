@@ -2,8 +2,9 @@
 
 .grid-container {
   max-width: $grid-ct--max-width;
+  margin: 0 1rem;
   display: grid;
-  grid-template-columns: repeat($grid-columns, 1fr);
+  grid-template-columns: repeat($grid-columns, $grid-card-width);
   grid-auto-rows: 150px;
   grid-gap: $grid-gap;
   grid-auto-flow: dense;
@@ -39,7 +40,7 @@
   }
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 700px) {
   .grid-container {
     grid-template-columns: repeat($grid-columns - 2, 1fr);
   }
