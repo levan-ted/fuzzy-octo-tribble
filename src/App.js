@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { DataProvider } from "./contexts/data-context";
 import Homepage from "./pages/Homepage";
 
 function App() {
@@ -7,7 +8,9 @@ function App() {
   }, []);
   return (
     <>
-      <Homepage />
+      <DataProvider>
+        <Homepage />
+      </DataProvider>
     </>
   );
 }
