@@ -20,6 +20,8 @@
   transform: translate(-50%, -50%);
   z-index: 2;
   overflow: hidden;
+  animation: expand 0.3s ease-out forwards;
+
   img {
     max-width: 90vw;
     height: 80vh;
@@ -38,5 +40,19 @@
   .close:hover {
     transform: scale(1.1);
     color: $loader-color;
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: translate(-50%, -30%);
+    opacity: 0;
+  }
+  50% {
+    transform: translate(-50%, -55%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%);
   }
 }
