@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import { X } from "react-feather";
 
@@ -6,7 +7,6 @@ import classes from "./Preview.module.scss";
 
 const Preview = ({ data, handleClose }) => {
   const handleKeyDown = (e) => {
-    console.log(e);
     if (e.key === "Escape") handleClose();
   };
   return (
@@ -18,6 +18,11 @@ const Preview = ({ data, handleClose }) => {
       <div onClick={handleClose} className={classes.backdrop} />
     </>
   );
+};
+
+Preview.propTypes = {
+  data: PropTypes.object,
+  handleClose: PropTypes.func,
 };
 
 export default Preview;
