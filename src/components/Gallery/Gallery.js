@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Card from "../Card";
 import classes from "./Gallery.module.scss";
 
@@ -16,6 +17,10 @@ const Gallery = ({ list }) => {
       ))}
     </section>
   );
+};
+
+Gallery.propTypes = {
+  list: PropTypes.array,
 };
 
 export default Gallery;

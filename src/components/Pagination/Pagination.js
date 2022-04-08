@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useCallback } from "react";
-
+import PropTypes from "prop-types";
 import Loader from "../Loader";
 
 import classes from "./Pagination.module.scss";
@@ -26,6 +26,11 @@ const Pagination = ({ noMoreItems, handlePagination }) => {
       {noMoreItems ? endOfPage : <Loader ref={loaderRef} />}
     </section>
   );
+};
+
+Pagination.propTypes = {
+  handlePagination: PropTypes.func,
+  noMoreItems: PropTypes.bool,
 };
 
 export default Pagination;

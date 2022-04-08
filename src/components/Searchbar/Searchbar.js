@@ -1,14 +1,15 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Search, X } from "react-feather";
 
 import classes from "./Searchbar.module.scss";
 
-const Searchbar = (props) => {
+const Searchbar = ({ keywords, setKeywords }) => {
   const [inputVal, setInputVal] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    props.setKeywords((prevState) => {
+    setKeywords((prevState) => {
       if (prevState.includes(inputVal) || inputVal.trim() === "")
         return prevState;
       return [...prevState, inputVal.toLowerCase()];
@@ -23,7 +24,7 @@ const Searchbar = (props) => {
   const handleClearInput = () => setInputVal("");
 
   const handleRemove = (word) =>
-    props.setKeywords((prevState) => prevState.filter((item) => item !== word));
+    setKeywords((prevState) => prevState.filter((item) => item !== word));
 
   return (
     <section className={classes.container}>
@@ -41,7 +42,7 @@ const Searchbar = (props) => {
         <span />
       </form>
       <div className={classes.keywords}>
-        {props.keywords.map((word) => (
+        {keywords.map((word) => (
           <span className={classes.keyword}>
             {word}
             <X
@@ -53,6 +54,11 @@ const Searchbar = (props) => {
       </div>
     </section>
   );
+};
+
+Searchbar.propTypes = {
+  keywords: PropTypes.array,
+  setKeywords: PropTypes.func,
 };
 
 export default Searchbar;
