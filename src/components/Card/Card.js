@@ -32,6 +32,7 @@ const Card = ({ data, className, idx }) => {
       {showPrev && (
         <Modal handleClose={() => setShowPrev(false)}>
           <img src={data.imagePath} alt={data.title} />
+          <p className={classes["image-description"]}>{data.description}</p>
         </Modal>
       )}
     </>
