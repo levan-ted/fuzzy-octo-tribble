@@ -1,5 +1,10 @@
 @import "../../styles/variables.scss";
 
+.title {
+  width: 100%;
+  font-size: 1rem;
+  text-align: center;
+}
 .form {
   display: grid;
   grid-template-columns: 300px;
@@ -22,4 +27,11 @@
 .submit:disabled {
   background-color: $secondary-background;
   cursor: not-allowed;
+}
+
+.loader-container {
+  @include centered-flex;
+  width: 200px;
+  height: 150px;
+  background: $main-background;
 }
