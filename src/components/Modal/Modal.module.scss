@@ -12,6 +12,7 @@
 }
 
 .container {
+  @include centered-flex;
   position: fixed;
   max-width: 80vw;
   max-height: 80vh;
@@ -54,5 +55,12 @@
   }
   100% {
     transform: translate(-50%, -50%);
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    max-width: 90vw;
+    width: 100%;
   }
 }
