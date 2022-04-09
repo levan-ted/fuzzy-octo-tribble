@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+.form {
+  display: grid;
+  grid-template-columns: 300px;
+  grid-auto-rows: 40px;
+  grid-gap: 1rem;
+  // margin: 2rem;
+  padding: 3rem;
+  background-color: $main-background;
+}
+
+.submit {
+  background: $loader-color;
+  border: none;
+  color: $main-background;
+  cursor: pointer;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.submit:disabled {
+  background-color: $secondary-background;
+  cursor: not-allowed;
+}

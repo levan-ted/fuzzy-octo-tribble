@@ -10,6 +10,20 @@
   grid-auto-flow: dense;
 }
 
+.add-card {
+  background: $secondary-background;
+  border: none;
+  color: $secondary-text-color;
+  transition: all ease-out 0.2s;
+  cursor: pointer;
+}
+.add-card:hover {
+  color: $main-text-color;
+  .plus {
+    transform: scale(1.3);
+  }
+}
+
 .h-2 {
   grid-row: span 2;
 }

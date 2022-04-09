@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Search, X } from "react-feather";
+import Input from "../Input";
 
 import classes from "./Searchbar.module.scss";
 
@@ -30,7 +31,7 @@ const Searchbar = ({ keywords, setKeywords }) => {
     <section className={classes.container}>
       <form onSubmit={handleSubmit}>
         <X className={classes.clear} onClick={handleClearInput} />
-        <input
+        <Input
           type="text"
           placeholder="Search..."
           value={inputVal}
@@ -39,7 +40,7 @@ const Searchbar = ({ keywords, setKeywords }) => {
         <button type="submit">
           <Search />
         </button>
-        <span />
+        {/* <span /> */}
       </form>
       <div className={classes.keywords}>
         {keywords.map((word) => (

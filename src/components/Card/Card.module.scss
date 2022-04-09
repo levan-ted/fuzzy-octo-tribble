@@ -8,7 +8,6 @@
   overflow: hidden;
   cursor: pointer;
   transition: box-shadow ease-out 0.2s;
-  animation: slidein ease-in forwards 1 normal 0.2s;
 
   .image-container {
     width: 100%;
@@ -35,7 +34,6 @@
     user-select: none;
     opacity: 0;
     transition: all ease-out 0.2s;
-
     background-color: rgba($color: #000000, $alpha: 0.3);
     text-transform: uppercase;
     object-fit: cover;
@@ -47,14 +45,5 @@
   .title {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes slidein {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }

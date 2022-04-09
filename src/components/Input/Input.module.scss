@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.input {
+  background: $secondary-background;
+  border: none;
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: $secondary-text-color;
+  padding: 0 1.1rem;
+}
+.underline {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  background: $loader-color;
+  transition: all ease-in-out 0.2s;
+  z-index: 12;
+}
+
+.show-underline {
+  left: 0;
+}
+
+.helper-text {
+  @include centered-flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  margin: 0 1rem;
+  font-size: 10px;
+}

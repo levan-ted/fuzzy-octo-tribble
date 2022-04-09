@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import PropTypes from "prop-types";
-import Preview from "../Preview";
+import Modal from "../Modal";
 import classes from "./Card.module.scss";
 
 const Card = ({ data, className, idx }) => {
   const [showPrev, setShowPrev] = useState(false);
-  const animationDelay = `${idx * 100}s`;
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") setShowPrev(true);
+  };
+
   return (
     <>
       <div
+        onKeyDown={handleKeyDown}
+        tabIndex="0"
         onClick={() => setShowPrev(true)}
-        style={{ animationDelay }}
         className={`${classes.card} ${className}`}
       >
         <div className={classes["image-container"]}>
@@ -22,8 +28,11 @@ const Card = ({ data, className, idx }) => {
         </div>
         <span className={classes.title}>{data.title}</span>
       </div>
+
       {showPrev && (
-        <Preview data={data} handleClose={() => setShowPrev(false)} />
+        <Modal handleClose={() => setShowPrev(false)}>
+          <img src={data.imagePath} alt={data.title} />
+        </Modal>
       )}
     </>
   );
