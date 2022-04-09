@@ -6,6 +6,7 @@ import classes from "./Form.module.scss";
 
 import { validateForm } from "../../helpers/form-validation";
 import { postData } from "../../services/data-fetching";
+// import { MOCK_DATA } from "../../constants/mock-data";
 import Loader from "../Loader";
 
 const Form = () => {
