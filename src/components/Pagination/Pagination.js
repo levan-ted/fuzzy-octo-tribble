@@ -11,7 +11,7 @@ const Pagination = ({ noMoreItems, handlePagination }) => {
   const handleObserver = useCallback((entries) => {
     const target = entries[0];
     if (target.isIntersecting) {
-      setTimeout(handlePagination, 1000);
+      setTimeout(handlePagination, 500);
     }
   });
 

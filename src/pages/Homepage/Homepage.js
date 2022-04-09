@@ -24,7 +24,7 @@ const Homepage = () => {
       {list.length > 0 && (
         <Pagination
           noMoreItems={list.length === filteredCards.length}
-          handlePagination={() => setCurrentPage(currentPage + 1)}
+          handlePagination={() => setCurrentPage((prevState) => prevState + 1)}
         />
       )}
     </div>

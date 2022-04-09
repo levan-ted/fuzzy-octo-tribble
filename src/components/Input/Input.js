@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import classes from "./Input.module.scss";
 
 const Input = ({ type, placeholder, value, onChange, helperText }) => {
@@ -35,6 +36,14 @@ const Input = ({ type, placeholder, value, onChange, helperText }) => {
       {helperText && <p className={classes["helper-text"]}>{helperText}</p>}
     </div>
   );
+};
+
+Input.propTypes = {
+  type: PropTypes.string,
+  placeholder: PropTypes.string,
+  value: PropTypes.string,
+  onChange: PropTypes.func,
+  helperText: PropTypes.string,
 };
 
 export default Input;
