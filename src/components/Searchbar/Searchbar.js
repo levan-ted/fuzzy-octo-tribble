@@ -1,28 +1,27 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Search, X } from "react-feather";
-import Input from "../Input";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Search, X } from 'react-feather';
+import Input from '../Input';
 
-import classes from "./Searchbar.module.scss";
+import classes from './Searchbar.module.scss';
 
 const Searchbar = ({ keywords, setKeywords }) => {
-  const [inputVal, setInputVal] = useState("");
+  const [inputVal, setInputVal] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setKeywords((prevState) => {
-      if (prevState.includes(inputVal) || inputVal.trim() === "")
-        return prevState;
+      if (prevState.includes(inputVal) || inputVal.trim() === '') return prevState;
       return [...prevState, inputVal.toLowerCase()];
     });
-    setInputVal("");
+    setInputVal('');
   };
 
   const handleChange = (e) => {
     setInputVal(e.target.value.toLowerCase());
   };
 
-  const handleClearInput = () => setInputVal("");
+  const handleClearInput = () => setInputVal('');
 
   const handleRemove = (word) =>
     setKeywords((prevState) => prevState.filter((item) => item !== word));
@@ -31,12 +30,7 @@ const Searchbar = ({ keywords, setKeywords }) => {
     <section className={classes.container}>
       <form onSubmit={handleSubmit}>
         <X className={classes.clear} onClick={handleClearInput} />
-        <Input
-          type="text"
-          placeholder="Search..."
-          value={inputVal}
-          onChange={handleChange}
-        />
+        <Input type="text" placeholder="Search..." value={inputVal} onChange={handleChange} />
         <button type="submit">
           <Search />
         </button>
@@ -44,12 +38,9 @@ const Searchbar = ({ keywords, setKeywords }) => {
       </form>
       <div className={classes.keywords}>
         {keywords.map((word) => (
-          <span className={classes.keyword}>
+          <span key={word} className={classes.keyword}>
             {word}
-            <X
-              className={classes["remove-icon"]}
-              onClick={() => handleRemove(word)}
-            />
+            <X className={classes['remove-icon']} onClick={() => handleRemove(word)} />
           </span>
         ))}
       </div>
@@ -59,7 +50,7 @@ const Searchbar = ({ keywords, setKeywords }) => {
 
 Searchbar.propTypes = {
   keywords: PropTypes.array,
-  setKeywords: PropTypes.func,
+  setKeywords: PropTypes.func
 };
 
 export default Searchbar;

@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import classes from "./Modal.module.scss";
+import React from 'react';
+import PropTypes from 'prop-types';
+import classes from './Modal.module.scss';
 
-import { X } from "react-feather";
+import { X } from 'react-feather';
 
 const Modal = ({ children, handleClose }) => {
   const handleKeyDown = (e) => {
-    if (e.key === "Escape") handleClose();
-    if (e.target.id === "X" && e.key === "Enter") handleClose();
+    if (e.key === 'Escape') handleClose();
+    if (e.target.id === 'X' && e.key === 'Enter') handleClose();
   };
   return (
     <>
@@ -28,7 +28,7 @@ const Modal = ({ children, handleClose }) => {
 
 Modal.propTypes = {
   children: PropTypes.node,
-  handleClose: PropTypes.func,
+  handleClose: PropTypes.func
 };
 
 export default Modal;

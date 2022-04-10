@@ -5,5 +5,4 @@ export const cardsPerPage = 7;
 // $grid-auto-rows' value is here:  src/styles/variables.scss
 export const CHMC = 4;
 
-export const apiUrl =
-  "https://fuzzy-octo-default-rtdb.europe-west1.firebasedatabase.app/data.json";
+export const apiUrl = 'https://fuzzy-octo-default-rtdb.europe-west1.firebasedatabase.app/data.json';

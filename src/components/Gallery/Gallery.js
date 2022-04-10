@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import Card from "../Card";
-import Modal from "../Modal";
-import Form from "../Form";
-import { Plus } from "react-feather";
-import classes from "./Gallery.module.scss";
-import { generateKey } from "../../helpers/keyGenerator";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import Card from '../Card';
+import Modal from '../Modal';
+import Form from '../Form';
+import { Plus } from 'react-feather';
+import classes from './Gallery.module.scss';
+import { generateKey } from '../../helpers/keyGenerator';
 
 const Gallery = ({ list }) => {
   const [showModal, setShowModal] = useState(false);
@@ -15,17 +15,12 @@ const Gallery = ({ list }) => {
   };
   return (
     <>
-      <section className={classes["grid-container"]}>
-        <button className={classes["add-card"]} onClick={handleModal}>
+      <section className={classes['grid-container']}>
+        <button className={classes['add-card']} onClick={handleModal}>
           <Plus className={classes.plus} />
         </button>
         {list.map((item, idx) => (
-          <Card
-            key={generateKey()}
-            idx={idx}
-            data={item}
-            className={classes[`h-${item.size}`]}
-          />
+          <Card key={generateKey()} idx={idx} data={item} className={classes[`h-${item.size}`]} />
         ))}
       </section>
       {showModal && (
@@ -38,7 +33,7 @@ const Gallery = ({ list }) => {
 };
 
 Gallery.propTypes = {
-  list: PropTypes.array,
+  list: PropTypes.array
 };
 
 export default Gallery;

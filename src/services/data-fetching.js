@@ -1,5 +1,4 @@
-import { CHMC, apiUrl } from "../constants/app-settings";
-import { generateKey } from "../helpers/keyGenerator";
+import { CHMC, apiUrl } from '../constants/app-settings';
 
 const randomize = (num = 1) => Math.trunc(Math.random() * num) + 1;
 
@@ -13,11 +12,11 @@ const fetchData = async (fn) => {
 const postData = async (data) => {
   try {
     const res = await fetch(apiUrl, {
-      method: "PUT",
+      method: 'PUT',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(data)
     });
 
     return res;
