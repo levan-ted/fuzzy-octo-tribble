@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import PropTypes from "prop-types";
 import { dataContext } from "../../contexts/data-context";
 import Input from "../Input";
 
@@ -9,13 +10,14 @@ import { postData } from "../../services/data-fetching";
 // import { MOCK_DATA } from "../../constants/mock-data";
 import Loader from "../Loader";
 
-const Form = () => {
+const Form = ({ handleClose }) => {
   const ctx = useContext(dataContext);
   const [title, setTitle] = useState({ value: "", helperText: "" });
   const [description, setDescription] = useState({ value: "", helperText: "" });
   const [url, setUrl] = useState({ value: "", helperText: "" });
   const [loading, setLoading] = useState(false);
   const [formTitle, setFormTitle] = useState("ADD YOUR IMAGE");
+  const [submitted, setSubmitted] = useState(false);
 
   const handleTitleChange = (e) => {
     setTitle((prevState) => ({ ...prevState, value: e.target.value }));
@@ -57,9 +59,11 @@ const Form = () => {
           setUrl({ value: "", helperText: "" });
           setLoading(false);
           setFormTitle("Image was added!");
+          setSubmitted(true);
         } else {
           setLoading(false);
           setFormTitle("ERROR: " + res.statusText);
+          setSubmitted(true);
         }
       } catch (err) {
         setLoading(false);
@@ -68,15 +72,17 @@ const Form = () => {
     }
   };
 
-  const btnIsEnabled =
-    title.value.trim().length > 0 &&
-    description.value.trim().length > 0 &&
-    url.value.trim().length > 0;
-
   if (loading)
     return (
       <div className={classes["loader-container"]}>
         <Loader />
+      </div>
+    );
+
+  if (submitted)
+    return (
+      <div className={classes["loader-container"]}>
+        <h6>{formTitle}</h6>
       </div>
     );
 
@@ -107,6 +113,10 @@ const Form = () => {
       <button className={classes.submit}>Submit</button>
     </form>
   );
+};
+
+Form.propTypes = {
+  handleClose: PropTypes.func,
 };
 
 export default Form;

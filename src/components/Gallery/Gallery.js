@@ -30,7 +30,7 @@ const Gallery = ({ list }) => {
       </section>
       {showModal && (
         <Modal handleClose={handleModal}>
-          <Form />
+          <Form handleClose={handleModal} />
         </Modal>
       )}
     </>
