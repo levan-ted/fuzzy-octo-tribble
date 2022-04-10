@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from 'react';
 
-import PropTypes from "prop-types";
-import Modal from "../Modal";
-import classes from "./Card.module.scss";
+import PropTypes from 'prop-types';
+import Modal from '../Modal';
+import classes from './Card.module.scss';
 
-const Card = ({ data, className, idx }) => {
+const Card = ({ data, className }) => {
   const [showPrev, setShowPrev] = useState(false);
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") setShowPrev(true);
+    if (e.key === 'Enter') setShowPrev(true);
   };
 
   return (
@@ -17,14 +17,9 @@ const Card = ({ data, className, idx }) => {
         onKeyDown={handleKeyDown}
         tabIndex="0"
         onClick={() => setShowPrev(true)}
-        className={`${classes.card} ${className}`}
-      >
-        <div className={classes["image-container"]}>
-          <img
-            className={classes.image}
-            src={data.imagePath}
-            alt={data.title}
-          />
+        className={`${classes.card} ${className}`}>
+        <div className={classes['image-container']}>
+          <img className={classes.image} src={data.imagePath} alt={data.title} />
         </div>
         <span className={classes.title}>{data.title}</span>
       </div>
@@ -32,7 +27,7 @@ const Card = ({ data, className, idx }) => {
       {showPrev && (
         <Modal handleClose={() => setShowPrev(false)}>
           <img src={data.imagePath} alt={data.title} />
-          <p className={classes["image-description"]}>{data.description}</p>
+          <p className={classes['image-description']}>{data.description}</p>
         </Modal>
       )}
     </>
@@ -42,7 +37,7 @@ const Card = ({ data, className, idx }) => {
 Card.propTypes = {
   data: PropTypes.object,
   className: PropTypes.string,
-  idx: PropTypes.number,
+  idx: PropTypes.number
 };
 
 export default Card;

@@ -1,13 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 
-import Searchbar from "../../components/Searchbar/Searchbar";
-import Gallery from "../../components/Gallery";
-import Pagination from "../../components/Pagination";
-import classes from "./Homepage.module.scss";
+import Searchbar from '../../components/Searchbar/Searchbar';
+import Gallery from '../../components/Gallery';
+import Pagination from '../../components/Pagination';
+import classes from './Homepage.module.scss';
 
-import { dataContext } from "../../contexts/data-context";
-import { cardsPerPage } from "../../constants/app-settings";
-import { filterCards } from "../../helpers/filter-cards";
+import { dataContext } from '../../contexts/data-context';
+import { cardsPerPage } from '../../constants/app-settings';
+import { filterCards } from '../../helpers/filter-cards';
 
 const Homepage = () => {
   const ctx = useContext(dataContext);

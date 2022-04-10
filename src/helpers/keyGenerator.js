@@ -1,5 +1,4 @@
-const letters =
-  "abcdefghijklmnopqrstuvyxyzABCDEFGHIJKLMNOPQRSTUVYXYZ0123456789";
+const letters = 'abcdefghijklmnopqrstuvyxyzABCDEFGHIJKLMNOPQRSTUVYXYZ0123456789';
 
 export const generateKey = (length = 10) => {
   const keyArray = [];
@@ -9,5 +8,5 @@ export const generateKey = (length = 10) => {
     keyArray.push(letters[randomIdx]);
   }
 
-  return keyArray.join("");
+  return keyArray.join('');
 };

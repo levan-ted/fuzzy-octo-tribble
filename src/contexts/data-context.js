@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
-import Loader from "../components/Loader";
-import { fetchData } from "../services/data-fetching";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import Loader from '../components/Loader';
+import { fetchData } from '../services/data-fetching';
 
 const initialState = { data: [], addCard: () => {} };
 
-export const dataContext = React.createContext([]);
+export const dataContext = React.createContext(initialState);
 
 export const DataProvider = (props) => {
   const [data, setData] = useState([]);
@@ -26,4 +27,8 @@ export const DataProvider = (props) => {
       {loading ? <Loader /> : props.children}
     </dataContext.Provider>
   );
+};
+
+DataProvider.propTypes = {
+  children: PropTypes.node
 };

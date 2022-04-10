@@ -1,60 +1,50 @@
-export const validateForm = (
-  title,
-  description,
-  url,
-  setTitle,
-  setDescription,
-  setUrl
-) => {
+export const validateForm = (title, description, url, setTitle, setDescription, setUrl) => {
   const isValid = { title: true, description: true, url: true };
 
-  if (title.value.trim() === "") {
+  if (title.value.trim() === '') {
     setTitle((prevState) => ({
       ...prevState,
-      helperText: "*required",
+      helperText: '*required'
     }));
     isValid.title = false;
   } else {
     setTitle((prevState) => ({
       ...prevState,
-      helperText: "",
+      helperText: ''
     }));
     isValid.title = true;
   }
 
-  if (description.value.trim() === "") {
+  if (description.value.trim() === '') {
     setDescription((prevState) => ({
       ...prevState,
-      helperText: "*required",
+      helperText: '*required'
     }));
     isValid.description = false;
   } else {
     setDescription((prevState) => ({
       ...prevState,
-      helperText: "",
+      helperText: ''
     }));
     isValid.description = true;
   }
 
-  if (url.value.trim() === "") {
+  if (url.value.trim() === '') {
     setUrl((prevState) => ({
       ...prevState,
-      helperText: "*required",
+      helperText: '*required'
     }));
     isValid.url = false;
-  } else if (
-    !url.value.startsWith("http://") &&
-    !url.value.startsWith("https://")
-  ) {
+  } else if (!url.value.startsWith('http://') && !url.value.startsWith('https://')) {
     setUrl((prevState) => ({
       ...prevState,
-      helperText: "invalid URL",
+      helperText: 'invalid URL'
     }));
     isValid.url = false;
   } else {
     setUrl((prevState) => ({
       ...prevState,
-      helperText: "",
+      helperText: ''
     }));
     isValid.url = true;
   }

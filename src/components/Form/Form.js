@@ -1,21 +1,23 @@
-import React, { useState, useContext } from "react";
-import { dataContext } from "../../contexts/data-context";
-import Input from "../Input";
+import React, { useState, useContext } from 'react';
 
-import classes from "./Form.module.scss";
+import { dataContext } from '../../contexts/data-context';
+import Input from '../Input';
 
-import { validateForm } from "../../helpers/form-validation";
-import { postData } from "../../services/data-fetching";
+import classes from './Form.module.scss';
+
+import { validateForm } from '../../helpers/form-validation';
+import { postData } from '../../services/data-fetching';
 // import { MOCK_DATA } from "../../constants/mock-data";
-import Loader from "../Loader";
+import Loader from '../Loader';
 
 const Form = () => {
   const ctx = useContext(dataContext);
-  const [title, setTitle] = useState({ value: "", helperText: "" });
-  const [description, setDescription] = useState({ value: "", helperText: "" });
-  const [url, setUrl] = useState({ value: "", helperText: "" });
+  const [title, setTitle] = useState({ value: '', helperText: '' });
+  const [description, setDescription] = useState({ value: '', helperText: '' });
+  const [url, setUrl] = useState({ value: '', helperText: '' });
   const [loading, setLoading] = useState(false);
-  const [formTitle, setFormTitle] = useState("ADD YOUR IMAGE");
+  const [formTitle, setFormTitle] = useState('ADD YOUR IMAGE');
+  const [submitted, setSubmitted] = useState(false);
 
   const handleTitleChange = (e) => {
     setTitle((prevState) => ({ ...prevState, value: e.target.value }));
@@ -30,21 +32,14 @@ const Form = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formIsValid = validateForm(
-      title,
-      description,
-      url,
-      setTitle,
-      setDescription,
-      setUrl
-    );
+    const formIsValid = validateForm(title, description, url, setTitle, setDescription, setUrl);
 
     if (formIsValid) {
       const newCard = {
         description: description.value,
         title: title.value,
         imagePath: url.value,
-        size: 1,
+        size: 1
       };
       try {
         setLoading(true);
@@ -52,14 +47,16 @@ const Form = () => {
         const res = await postData([newCard, ...ctx.data]);
         if (res.ok) {
           ctx.addCard(newCard);
-          setTitle({ value: "", helperText: "" });
-          setDescription({ value: "", helperText: "" });
-          setUrl({ value: "", helperText: "" });
+          setTitle({ value: '', helperText: '' });
+          setDescription({ value: '', helperText: '' });
+          setUrl({ value: '', helperText: '' });
           setLoading(false);
-          setFormTitle("Image was added!");
+          setFormTitle('Image was added!');
+          setSubmitted(true);
         } else {
           setLoading(false);
-          setFormTitle("ERROR: " + res.statusText);
+          setFormTitle('ERROR: ' + res.statusText);
+          setSubmitted(true);
         }
       } catch (err) {
         setLoading(false);
@@ -68,15 +65,17 @@ const Form = () => {
     }
   };
 
-  const btnIsEnabled =
-    title.value.trim().length > 0 &&
-    description.value.trim().length > 0 &&
-    url.value.trim().length > 0;
-
   if (loading)
     return (
-      <div className={classes["loader-container"]}>
+      <div className={classes['loader-container']}>
         <Loader />
+      </div>
+    );
+
+  if (submitted)
+    return (
+      <div className={classes['loader-container']}>
+        <h6>{formTitle}</h6>
       </div>
     );
 
