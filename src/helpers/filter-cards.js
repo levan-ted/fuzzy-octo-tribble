@@ -3,7 +3,11 @@ export const filterCards = (cards, keywords) => {
 
   const filtered = [];
   keywords.forEach((keyword) => {
-    const matches = cards.filter((card) => card.title.toLowerCase().includes(keyword));
+    const matches = cards.filter(
+      (card) =>
+        card.title.toLowerCase().includes(keyword) ||
+        card.description.toLowerCase().includes(keyword)
+    );
     filtered.push(...matches);
   });
   const uniqueList = filtered.filter(
